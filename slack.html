@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    <link rel="stylesheet" href="slack.css">
+</head>
+
+<body>
+    <h1>SLACK</h1>
+    <div id='messageBox'>
+    </div>
+    <div class="newMessage">
+        <input id='nameInput' type="text" placeholder="Name...">
+        <textarea id='messageInput' type="text" placeholder="Message..."></textarea>
+        <div id='submitButton' class='submit'>SUBMIT</div>
+    </div>
+</body>
+<script src="./lib/expect/index.js"></script>
+<script src="./lib/mocha/mocha.js"></script>
+<script src="./test/polyfill.js"></script>
+
+<!-- <script src='client/main.js'></script> -->
+<script src='./slack.js'></script>
+<script>
+    if (window.mochaPhantomJS) {
+        mocha.setup('bdd');
+        addScript("./test/calendar-test.js");
+    }
+
+    function addScript(path) {
+        var js = document.createElement('script');
+        js.type = 'text/javascript';
+        js.src = path;
+        document.body.appendChild(js);
+    }
+</script>
+
+</html>
